@@ -16,7 +16,10 @@ jobs:
       - checkout
       - run:
           name: "Tag the current commit"
-          command: "git status"
+          command: "git tag $(date +\"%Y-%m-%d.%H%M%S\")"
+      - run:
+          name: "Push tags"
+          command: "git push --tags"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
